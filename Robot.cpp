@@ -64,7 +64,7 @@ void Robot::AutonomousPeriodic() {
 			vitesse = 0;
 			countdown = 1;
 		}
-		else {
+		else { 
 			if(oldVitesse < 0.0){
 				vitesse = 0.2;
 				countdown = 2;
@@ -94,17 +94,17 @@ void Robot::TeleopPeriodic() {
 
 	Drive.ArcadeDrive(joystick0.GetY(), joystick0.GetX(), true);
 
-	// Temps écoulé entre deux itérations du téléop
+	// Temps Ã©coulÃ© entre deux itÃ©rations du tÃ©lÃ©op
 	deltaTime = timer.Get()-oldTime;
-	// Temps minimum à attendre avant de relancer la pneumatique
+	// Temps minimum Ã  attendre avant de relancer la pneumatique
 	soleCooldown -=deltaTime;
 
-	// Incrémentation de la charge de la pneumatique
+	// IncrÃ©mentation de la charge de la pneumatique
 	if(joystick0.GetTop() && soleCharge < 2.55 && soleCooldown <= 0){
 		soleCharge = (soleCharge+deltaTime<2.55)?soleCharge+deltaTime:2.55;
 	}
 
-	// Déclenchement du piston
+	// DÃ©clenchement du piston
 	if(joystick0.GetTopReleased() && soleCooldown <= 0 && soleCharge >= 0.2)
 	{
 		sole.SetPulseDuration(soleCharge);
