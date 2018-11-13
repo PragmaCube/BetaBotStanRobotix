@@ -63,7 +63,7 @@ void Robot::AutonomousPeriodic() {
 			oldVitesse = vitesse;
 			vitesse = 0;
 			countdown = 1;
-			Drive.ArcadeDrive(0, 1, false);	
+			Drive.ArcadeDrive(oldVitesse, 1, false);	
 		}
 		else { 
 			if(oldVitesse < 0){
