@@ -46,6 +46,7 @@ void Robot::AutonomousInit() {
 	cout << deltaTime << endl;
 	countdown = 2;
 	vitesse = 0.2;
+  vitesse_x = 0.35;
 }
 
 void Robot::AutonomousPeriodic() {
@@ -62,8 +63,9 @@ void Robot::AutonomousPeriodic() {
 		if(vitesse != 0){
 			oldVitesse = vitesse;
 			vitesse = 0;
+      vitesse_x = vitesse_x * -1;
 			countdown = 1;
-			Drive.ArcadeDrive(oldVitesse, 1, false);	
+			Drive.ArcadeDrive(oldVitesse, vitesse_x;, false);	
 		}
 		else { 
 			if(oldVitesse < 0){
